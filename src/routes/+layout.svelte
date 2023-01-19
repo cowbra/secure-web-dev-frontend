@@ -2,7 +2,7 @@
 	import Nav from './Nav.svelte';
 </script>
 
-<Nav/>
+<Nav />
 
 <main>
 	<slot />

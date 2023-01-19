@@ -3,17 +3,16 @@
 // and what to do when importing types
 declare global {
 	namespace App {
-
 		interface UserProps {
-			username: string,
-			role: string,
-			id: string
+			username: string;
+			role: string;
+			id: string;
 		}
 		interface Error {
-			message: string
+			message: string;
 		}
 		interface Locals {
-			user: UserProps 
+			user: UserProps;
 		}
 		interface PageData {}
 		// interface Platform {}

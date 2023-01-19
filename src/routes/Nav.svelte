@@ -8,14 +8,18 @@
 			<li class="nav-item">
 				<a class="nav-link" class:active={$page.url.pathname === '/'} href="/">Home</a>
 			</li>
-            <li class="nav-item">
+			<li class="nav-item">
 				<a class="nav-link" class:active={$page.url.pathname === '/login'} href="/login">Login</a>
 			</li>
-            <li class="nav-item">
-				<a class="nav-link" class:active={$page.url.pathname === '/register'} href="/register">Register</a>
+			<li class="nav-item">
+				<a class="nav-link" class:active={$page.url.pathname === '/register'} href="/register"
+					>Register</a
+				>
 			</li>
-            <li class="nav-item">
-				<a class="nav-link" class:active={$page.url.pathname === '/register'} href="/register">Register</a>
+			<li class="nav-item">
+				<a class="nav-link" class:active={$page.url.pathname === '/register'} href="/register"
+					>Register</a
+				>
 			</li>
 		</ul>
 	</div>
