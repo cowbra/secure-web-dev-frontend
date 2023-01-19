@@ -1,10 +1,9 @@
-/** @type {import('@sveltejs/kit').Handle} */
+import type { Handle } from '@sveltejs/kit';
+import * as api from '$lib/api';
 
-import type { HooksProps } from './$types';
-
-export function handle({ event, resolve }: HooksProps) {
+export const handle = (async ({ event, resolve }) => {
 	const jwt = event.cookies.get('jwt');
-	event.locals.user = jwt ? JSON.parse(atob(jwt)) : null;
-
+	const response = await api.get('users/me', jwt);
+	event.locals.user = response.ok ? response.result : null;
 	return resolve(event);
-}
+}) satisfies Handle;

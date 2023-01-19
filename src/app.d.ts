@@ -6,7 +6,8 @@ declare global {
 		interface UserProps {
 			username: string;
 			role: string;
-			id: string;
+			_id: string;
+			__v: number;
 		}
 		interface Error {
 			message: string;
@@ -14,7 +15,6 @@ declare global {
 		interface Locals {
 			user: UserProps;
 		}
-		interface PageData {}
 		// interface Platform {}
 	}
 }

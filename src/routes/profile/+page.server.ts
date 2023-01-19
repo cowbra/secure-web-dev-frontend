@@ -3,16 +3,17 @@ import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load = (async ({ locals }) => {
-	if (locals.user) throw redirect(307, '/');
+	if (!locals.user) throw redirect(307, '/');
+	return { user: locals.user };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-	default: async ({ cookies, request }) => {
+	profile: async ({ cookies, request }) => {
 		const data = await request.formData();
 
 		const username = data.get('username');
 		const password = data.get('password');
-		if (!username && !password) return fail(400, { missingFields: true });
+		if (!username && !password) return; // no parameters, we do nothing
 		if (!username) return fail(400, { missingUsername: true });
 		if (!password) return fail(400, { missingPassword: true });
 
@@ -25,5 +26,10 @@ export const actions: Actions = {
 		}
 
 		return { ...response };
+	},
+	disconnect: async ({ cookies, locals }) => {
+		cookies.delete('jwt');
+		locals.user = null;
+		throw redirect(307, '/');
 	}
 };
