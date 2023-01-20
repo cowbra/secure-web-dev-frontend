@@ -17,16 +17,8 @@
 					Home
 				</a>
 			</li>
-			<li class="nav-item">
-				<a
-					class="nav-link"
-					class:active={$page.url.pathname === '/locations'}
-					href="/locations"
-				>
-					Locations
-				</a>
-			</li>
-			{#if !data}
+			
+			{#if !data.user}
 				<li class="nav-item">
 					<a
 						class="nav-link"
@@ -37,6 +29,15 @@
 					</a>
 				</li>
 			{:else}
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						class:active={$page.url.pathname === '/locations'}
+						href="/locations"
+					>
+						Locations
+					</a>
+				</li>
 				<li class="nav-item">
 					<a
 						class="nav-link"

@@ -17,7 +17,6 @@ export const actions: Actions = {
 		if (!password) return fail(400, { missingPassword: true });
 
 		const response = await api.post('users/login', { username, password });
-		console.log(response);
 		if (response.ok) {
 			const value = response.result.jwt;
 			cookies.set('jwt', value, { path: '/' });
