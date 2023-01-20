@@ -17,7 +17,7 @@
 					Home
 				</a>
 			</li>
-			
+
 			{#if !data.user}
 				<li class="nav-item">
 					<a
