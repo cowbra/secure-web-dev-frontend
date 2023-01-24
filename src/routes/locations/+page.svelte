@@ -4,7 +4,6 @@
 </script>
 
 <h1>Locations</h1>
-<<<<<<< HEAD
 <form method="GET" action="/add" class="col-md-auto w-30">
 	<div class="form-outline">
 		<input
@@ -24,16 +23,6 @@
 				<th scope="col">More</th>
 				<th scope="col">Edit</th>
 				<th scope="col">Delete</th>
-=======
-
-{#if data}
-	{#if data.locations}
-		<table>
-			<tr>
-				{#each Object.keys(data.locations[0]) as key}
-					<th>{key}</th>
-				{/each}
->>>>>>> a513c27e417e95a67c777ff0ea9b68df1814bc59
 			</tr>
 			{#each data.locations as location}
 				<tr>
@@ -44,7 +33,6 @@
 							<td>{value}</td>
 						{/if}
 					{/each}
-<<<<<<< HEAD
 					<!-- Additional features -->
 					<td>
 						<button type="button" class="btn btn-primary btn-floating">
@@ -61,16 +49,10 @@
 						<i class="fas fa-magic"></i>
 					  	</button>
 					</td>
-=======
->>>>>>> a513c27e417e95a67c777ff0ea9b68df1814bc59
 				</tr>
 			{/each}
 		</table>
 	{:else}
 		<p>No location found</p>
 	{/if}
-<<<<<<< HEAD
 {/if}
-=======
-{/if}
->>>>>>> a513c27e417e95a67c777ff0ea9b68df1814bc59
