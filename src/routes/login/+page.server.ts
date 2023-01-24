@@ -1,4 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
+import { goto } from '$app/navigation';
 import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -20,7 +21,7 @@ export const actions: Actions = {
 		if (response.ok) {
 			const value = response.result.jwt;
 			cookies.set('jwt', value, { path: '/' });
-			throw redirect(307, '/locations');
+			throw goto('/locations');
 		}
 
 		return { ...response };

@@ -18,7 +18,6 @@ interface RequestInitHeader extends RequestInit {
 
 async function send({ method, path, data, token }: APIProps) {
 	const opts: RequestInitHeader = { method, headers: {} };
-
 	if (data) {
 		opts.headers['Content-Type'] = 'application/json';
 		opts.body = JSON.stringify(data);
@@ -27,23 +26,26 @@ async function send({ method, path, data, token }: APIProps) {
 	if (token) {
 		opts.headers['Authorization'] = `Bearer ${token}`;
 	}
-
-	const res = await fetch(`${base}/${path}`, opts);
-	if (res.status === 200 || res.status === 201) {
+	try {
+		const res = await fetch(`${base}/${path}`, opts);
+		if (res.status === 200 || res.status === 201) {
+			const result = await res.text();
+			return result
+				? { ok: true, result: JSON.parse(result) }
+				: { ok: true, result: {} };
+		}
 		const result = await res.text();
-		return result
-			? { ok: true, result: JSON.parse(result) }
-			: { ok: true, result: {} };
+		return { ok: false, result };
+	} catch (err) {
+		return { ok: false, result: "Server error"}
 	}
-	const result = await res.text();
-	return { ok: false, result };
 }
 
-export function get(path: string, token: string) {
+export function get(path: string, token?: string) {
 	return send({ method: 'GET', path, token });
 }
 
-export function del(path: string, token: string) {
+export function del(path: string, token?: string) {
 	return send({ method: 'DELETE', path, token });
 }
 

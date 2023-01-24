@@ -5,8 +5,9 @@
 	export let data: PageData;
 </script>
 
-<nav class="navbar navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between mb-3">
 	<div class="container">
+		<a class="navbar-brand" href="/">Secure Web Dev</a>
 		<ul class="nav navbar-nav pull-xs-right">
 			<li class="nav-item">
 				<a

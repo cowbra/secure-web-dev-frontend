@@ -6,6 +6,6 @@
 
 <Nav {data} />
 
-<main class="container d-flex flex-items-xs-middle">
+<main class="mx-auto w-75">
 	<slot />
 </main>
