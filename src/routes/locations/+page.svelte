@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import type { FilteredLocationProps } from '$lib/types/location';
 	export let data: PageData;
 </script>
 
@@ -16,40 +17,28 @@
 {#if data}
 	{#if data.locations}
 		<table class="table table-striped">
+			<!-- Headers row -->
 			<tr>
 			{#each Object.keys(data.locations[0]) as key}
 				<th scope="col">{key}</th>
 			{/each}
+			{#if data.user.role === 'admin'}
 				<th scope="col">More</th>
 				<th scope="col">Edit</th>
-				<th scope="col">Delete</th>
+			{/if}
 			</tr>
+
+			<!-- Data rows -->
 			{#each data.locations as location}
-				<tr>
-					{#each Object.entries(location) as [key, value]}
-						{#if key === 'geolocation'}
-							<td> {value[0]}, {value[1]}</td>
-						{:else}
-							<td>{value}</td>
-						{/if}
-					{/each}
-					<!-- Additional features -->
-					<td>
-						<button type="button" class="btn btn-primary btn-floating">
-						<i class="fas fa-magic"></i>
-					  </button>
-					</td>
-					<td>
-						<button type="button" class="btn btn-warning btn-floating">
-						<i class="fas fa-magic"></i>
-					  	</button>
-					</td>
-					<td>
-						<button type="button" class="btn btn-danger btn-floating">
-						<i class="fas fa-magic"></i>
-					  	</button>
-					</td>
-				</tr>
+			<tr>
+			{#each Object.values(location) as value}
+				<td>{value}</td>
+			{/each}
+			{#if data.user.role === 'admin'}
+				<td><a class="text-primary" href="/locations/{location.id}">More</a></td>
+				<td><a class="text-warning" href="/locations/edit/{location.id}">Edit</a></td>
+			{/if}
+			</tr>
 			{/each}
 		</table>
 	{:else}
