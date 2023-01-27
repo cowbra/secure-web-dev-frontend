@@ -1,20 +1,14 @@
-# create-svelte
+# Secure-Web-Dev Front
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+School workshop to implement a front end to use a given back-end made by our teacher, ![source](https://github.com/strawhattom/secure-web-dev-backend)
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+## Dependencies
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install
 ```
 
-## Developing
+## Developing (from svelte init)
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -25,7 +19,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+## Building (from svelte init)
 
 To create a production version of your app:
 
