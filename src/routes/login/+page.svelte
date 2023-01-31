@@ -1,28 +1,23 @@
 <script lang="ts">
-	import type { ActionData } from './$types';
+	import Input from '$lib/components/Input.svelte';
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
+	import type { ActionData, PageData } from './$types';
 	export let form: ActionData;
+	export let data: PageData;
+	$: if (browser && data) {
+		goto('/locations');
+	}
 </script>
 
-<div class="w-25 mx-auto">
+<div class="w-50 mx-auto">
 	<h1>Login</h1>
 	<form method="POST" action="/login" class="col-md-auto">
 		<div class="form-outline">
-			<label class="form-label" for="username">Username</label>
-			<input
-				type="text"
-				name="username"
-				id="username"
-				class="form-control form-control-lg"
-			/>
+			<Input name="username" label="Username"/>
 		</div>
 		<div class="form-outline">
-			<label class="form-label" for="password">Password</label>
-			<input
-				type="password"
-				name="password"
-				id="password"
-				class="form-control form-control-lg"
-			/>
+			<Input type="password" name="password" label="Password"/>
 		</div>
 		<input
 			type="submit"
@@ -46,7 +41,6 @@
 		{#if form?.missingPassword}
 			<p class="text-danger">Missing password</p>
 		{/if}
-		{#if form?.ok} <p class="text-success">You are now logged in !</p> {/if}
 		{#if form?.ok === false} <p class="text-danger">{form.result}</p> {/if}
 	</form>
 </div>

@@ -1,38 +1,20 @@
 <script lang="ts">
+	import Input from '$lib/components/Input.svelte';
 	import type { ActionData } from './$types';
-
 	export let form: ActionData;
 </script>
 
-<div class="w-25 mx-auto">
+<div class="w-50 mx-auto">
 	<h1>Register</h1>
 	<form method="POST" action="/register">
 		<div class="form-outline mb-4">
-			<label class="form-label" for="username">Username</label>
-			<input
-				type="text"
-				name="username"
-				id="username"
-				class="form-control form-control-lg"
-			/>
+			<Input name="username"	label="Username"/>
 		</div>
 		<div class="form-outline mb-4">
-			<label class="form-label" for="password">Password</label>
-			<input
-				type="password"
-				name="password"
-				id="password"
-				class="form-control form-control-lg"
-			/>
+			<Input type="password" name="password" label="Password"/>
 		</div>
 		<div class="form-outline mb-4">
-			<label class="form-label" for="verifyPassword">Verify password</label>
-			<input
-				type="password"
-				name="verifyPassword"
-				id="verifyPassword"
-				class="form-control form-control-lg"
-			/>
+			<Input type="password" name="verifyPassword" label="Password verification" />
 		</div>
 		<input
 			type="submit"

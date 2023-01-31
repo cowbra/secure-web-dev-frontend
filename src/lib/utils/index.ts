@@ -26,3 +26,18 @@ export const filterLocations = (locations: Array<LocationProps>) => {
 	})
     return filteredLocations;
 } 
+
+export const filterOneLocation = (location: LocationProps) => {
+	const cleanKeys = Object.keys(cleanLocationKeys);
+	const renamedKeyLocation = {};
+	for (const [key, value] of Object.entries(location)) {
+		if (!cleanKeys.includes(key)) continue;
+		const newKey = cleanLocationKeys[key];
+		renamedKeyLocation[newKey] = ((key === 'endDate' || key === 'startDate') ? new Date(value).toLocaleDateString() : value);
+	}
+	return renamedKeyLocation
+}
+
+export const isNumber = (n: unknown): boolean => {
+	return Number(n) === n && n % 1 !== 0;
+}

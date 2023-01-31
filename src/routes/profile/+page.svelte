@@ -1,32 +1,28 @@
 <script lang="ts">
+	import Input from '$lib/components/Input.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 </script>
 
-<div class="w-25 mx-auto">
+<div class="w-50 mx-auto">
 	<h1>My profile</h1>
 	<form method="POST" action="?/profile">
 		<div class="form-outline mb-4">
-			<label class="form-label" for="username">Username</label>
-			<input
-				type="text"
+			<Input 
 				name="username"
-				id="username"
-				class="form-control form-control-lg"
-				value={data.user.username}
+				label="Username"
+				value="{data.user.username}"
 			/>
 		</div>
 		<div class="form-outline mb-4">
-			<label class="form-label" for="password">Password</label>
-			<input
+			<Input
 				type="password"
 				name="password"
-				id="password"
-				class="form-control form-control-lg"
+				label="Password"
 			/>
 		</div>
-		<button formaction="?/profile" class="btn btn-warning btn-lg">Update</button>
-		<button formaction="?/disconnect" class="btn btn-danger btn-lg">Disconnect</button>
+		<button formaction="?/profile" class="btn btn-warning btn-lg mb-3">Update</button>
+		<button formaction="?/disconnect" class="btn btn-danger btn-lg mb-3">Disconnect</button>
 	</form>
 </div>
 

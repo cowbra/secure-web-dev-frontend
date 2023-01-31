@@ -2,11 +2,15 @@ import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { goto } from '$app/navigation';
 import * as api from '$lib/api';
-import type { LocationProps } from '$lib/types/location';
+import { filterOneLocation  } from '$lib/utils';
 
-export const load = (async ({ params, locals }) => {
+export const load = (async ({cookies, params, locals }) => {
   if (!locals.user) throw redirect(307, '/');
+  const jwt = cookies.get('jwt');
+  if (!jwt) throw redirect(307, '/')
   const id = params.id;
   if (!id) goto('/locations');
-  return await api.get(`locations/${id}`);
+  const response = await api.get(`locations/${id}`, jwt);
+  if (!response.ok) return { message: response.result }
+  return { location: filterOneLocation(response.result) };
 }) satisfies PageServerLoad;

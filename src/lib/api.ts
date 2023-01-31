@@ -1,5 +1,3 @@
-import { error } from '@sveltejs/kit';
-
 const base = 'http://localhost:3000';
 
 interface APIProps {

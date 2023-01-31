@@ -4,11 +4,11 @@ import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load = (async ({ locals }) => {
-	if (locals.user) throw redirect(307, '/');
+	if (locals.user) return locals.user;
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-	default: async ({ cookies, request }) => {
+	default: async ({ cookies, request, locals }) => {
 		const data = await request.formData();
 
 		const username = data.get('username');
@@ -21,7 +21,6 @@ export const actions: Actions = {
 		if (response.ok) {
 			const value = response.result.jwt;
 			cookies.set('jwt', value, { path: '/' });
-			throw goto('/locations');
 		}
 
 		return { ...response };

@@ -1,14 +1,12 @@
 <script lang="ts">
 	import Input from '$lib/components/Input.svelte';
-	import type { ActionData } from './$types';
-	export let form: ActionData;
+	import type { PageData } from './$types';
+	export let data: PageData;
+	console.log(data);
 </script>
 
 <div class="w-50 mx-auto">
-	<h1>New location</h1>
-	{#if form?.ok && form?.result } 
-		<p class="text-success">Added new location !</p>
-	{/if}
+	<h1>Edit location</h1>
 	<p>Go <a href='/locations'>back</a></p>
 	<form method="POST" class="col-md-auto">
 		<div class="form-outline mb-3">
@@ -58,10 +56,8 @@
         <div class="form-outline mb-1">
 			<Input name="year" label="Year" />
 		</div>
-        <input
-			type="submit"
-			value="New"
-			class="btn btn-primary mt-4 mb-4"
-		/>
+		<button formaction="?/edit" class="btn btn-warning btn-lg mb-3">Update</button>
+		<button formaction="?/delete" class="btn btn-danger btn-lg mb-3">Delete</button>
+
 	</form>
 </div>

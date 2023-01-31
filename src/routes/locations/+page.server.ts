@@ -4,7 +4,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { filterLocations } from '$lib/utils';
 
 export const load = (async ({ cookies, locals }) => {
-	if (!locals.user) throw redirect(307, '/');
+	if (!locals.user) throw redirect(307, '/login');
 	const response = await api.get('locations', cookies.get('jwt'));
 	const locations = filterLocations(response.result);
 	return {
@@ -18,6 +18,5 @@ export const actions: Actions = {
 		if (!jwt) throw fail(400);
 		const response = await api.del('locations', jwt);
 		console.log(response);
-
 	}
 }

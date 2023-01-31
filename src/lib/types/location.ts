@@ -5,7 +5,7 @@ export type LocationProps = {
 	endDate: Date,
 	filmName: string,
 	district: string,
-	geolocation: {
+	geolocation?: {
 		coordinates: Array<number>,
 		type: string
 	},
