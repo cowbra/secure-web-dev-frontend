@@ -5,6 +5,6 @@ export const handle = (async ({ event, resolve }) => {
 	const jwt = event.cookies.get('jwt');
 	if (!jwt) return resolve(event);
 	const response = await api.get('users/me', jwt);
-	event.locals.user = response.ok ? response.result : null;
+	event.locals.user = response.ok ? { jwt, ...response.result } : null;
 	return resolve(event);
 }) satisfies Handle;

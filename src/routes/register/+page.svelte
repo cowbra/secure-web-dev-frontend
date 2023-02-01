@@ -8,13 +8,17 @@
 	<h1>Register</h1>
 	<form method="POST" action="/register">
 		<div class="form-outline mb-4">
-			<Input name="username"	label="Username"/>
+			<Input name="username" label="Username" />
 		</div>
 		<div class="form-outline mb-4">
-			<Input type="password" name="password" label="Password"/>
+			<Input type="password" name="password" label="Password" />
 		</div>
 		<div class="form-outline mb-4">
-			<Input type="password" name="verifyPassword" label="Password verification" />
+			<Input
+				type="password"
+				name="verifyPassword"
+				label="Password verification"
+			/>
 		</div>
 		<input
 			type="submit"
@@ -23,11 +27,7 @@
 		/>
 		<p class="text-muted">
 			Have already an account?
-			<a
-				href="/login"
-			>
-				Here
-			</a>
+			<a href="/login"> Here </a>
 		</p>
 		{#if form?.missingFields}
 			<p class="text-danger">Please fill all fields</p>
@@ -44,7 +44,9 @@
 		{#if form?.passwordMismatch}
 			<p class="text-danger">Passwords mismatch !</p>
 		{/if}
-		{#if form?.ok} <p class="text-success">Successfully registered !</p> {/if}
+		{#if form?.ok}
+			<p class="text-success">Successfully registered !</p>
+		{/if}
 		{#if form?.ok === false} <p class="text-danger">{form.result}</p> {/if}
 	</form>
 </div>

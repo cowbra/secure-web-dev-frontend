@@ -21,6 +21,7 @@ export const actions: Actions = {
 		if (response.ok) {
 			const value = response.result.jwt;
 			cookies.set('jwt', value, { path: '/' });
+			locals.user = response.result;
 		}
 
 		return { ...response };

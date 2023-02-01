@@ -1,63 +1,129 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import Input from '$lib/components/Input.svelte';
-	import type { PageData } from './$types';
+	import type { PageData, ActionData } from './$types';
+	export let form: ActionData;
 	export let data: PageData;
-	console.log(data);
+
+	export let location = data.location;
+	$: if (browser && form) {
+		goto('/locations');
+	}
 </script>
 
 <div class="w-50 mx-auto">
 	<h1>Edit location</h1>
-	<p>Go <a href='/locations'>back</a></p>
-	<form method="POST" class="col-md-auto">
-		<div class="form-outline mb-3">
-			<Input name="filmType" label="Type"/>
-		</div>
-        <div class="row">
-            <div class="col form-outline mb-3">
-				<Input name="filmProducerName" label="Producer Name"/>
-            </div>
-            <div class="col form-outline mb-3">
-				<Input name="filmDirectorName" label="Director Name"/>
-            </div>
-        </div>
-        <div class="form-outline mb-3">
-			<Input name="filmName" label="Film Name"/>
-		</div>
-        <div class="row">
-            <div class="col form-outline mb-3">
-				<Input name="startDate" label="Start date"/>
-            </div>
-            <div class="col form-outline mb-3">
-				<Input name="endDate" label="End date"/>
-            </div>
-        </div>
-        <div class="form-outline mb-3">
-			<Input name="district" label="District"/>
-		</div>
-        <div class="form-outline mb-3">
-			<Input name="sourceLocationId" label="Source Location Id"/>
-		</div>
+	<p>Go <a href="/locations">back</a></p>
+	{#if location}
+		<form method="POST" class="col-md-auto">
+			<div class="form-outline mb-3">
+				<Input
+					name="filmType"
+					label="Film Type"
+					value={location.filmType}
+				/>
+			</div>
+			<div class="row">
+				<div class="col form-outline mb-3">
+					<Input
+						name="filmProducerName"
+						label="Producer Name"
+						value={location.filmProducerName}
+					/>
+				</div>
+				<div class="col form-outline mb-3">
+					<Input
+						name="filmDirectorName"
+						label="Director Name"
+						value={location.filmDirectorName}
+					/>
+				</div>
+			</div>
+			<div class="form-outline mb-3">
+				<Input
+					name="filmName"
+					label="Film Name"
+					value={location.filmName}
+				/>
+			</div>
+			<div class="row">
+				<div class="col form-outline mb-3">
+					<Input
+						name="startDate"
+						label="Start date"
+						value={location.startDate}
+					/>
+				</div>
+				<div class="col form-outline mb-3">
+					<Input
+						name="endDate"
+						label="End date"
+						value={location.endDate}
+					/>
+				</div>
+			</div>
+			<div class="form-outline mb-3">
+				<Input
+					name="district"
+					label="District"
+					value={location.district}
+				/>
+			</div>
+			<div class="form-outline mb-3">
+				<Input
+					name="sourceLocationId"
+					label="Source Location Id"
+					value={location.sourceLocationId}
+				/>
+			</div>
 
-		<label class="form-label" for="geolocation">Geolocation</label>
-		<div class="row">
-			<div class="col form-outline mb-3">
-				<Input name="geolocationX" label="X"/>
+			<label class="form-label" for="geolocation">Geolocation</label>
+			<div class="row">
+				<div class="col form-outline mb-3 text-muted">
+					<Input
+						type="date"
+						name="geolocationX"
+						label="X"
+						value={location.geolocation.coordinates[0]}
+					/>
+				</div>
+				<div class="col form-outline mb-3 text-muted">
+					<Input
+						type="date"
+						name="geolocationY"
+						label="Y"
+						value={new Date(
+							location.geolocation.coordinates[1]
+						).toLocaleDateString()}
+					/>
+				</div>
+				<div class="col form-outline mb-3 text=muted">
+					<Input
+						name="geolocationType"
+						label="Type"
+						value={location.geolocation.type}
+					/>
+				</div>
 			</div>
-			<div class="col form-outline mb-3">
-				<Input name="geolocationY" label="Y"/>
+			<div class="form-outline mb-3">
+				<Input
+					name="address"
+					label="Address"
+					value={location.address}
+				/>
 			</div>
-			<div class="col form-outline mb-3">
-				<Input name="geolocationType" label="Type" value="Point"/>
+			<div class="form-outline mb-3">
+				<Input name="year" label="Year" value={location.year} />
 			</div>
-		</div>
-        <div class="form-outline mb-3">
-			<Input name="address" label="Address"/>
-		</div>
-        <div class="form-outline mb-1">
-			<Input name="year" label="Year" />
-		</div>
-		<button formaction="?/edit" class="btn btn-warning btn-lg mb-3">Update</button>
-		<button formaction="?/delete" class="btn btn-danger btn-lg mb-3">Delete</button>
-
-	</form>
+			<button formaction="?/edit" class="btn btn-warning btn-lg mb-3"
+				>Update</button
+			>
+			<button formaction="?/delete" class="btn btn-danger btn-lg mb-3"
+				>Delete</button
+			>
+		</form>
+	{:else}
+		<p class="text-danger">No location found</p>
+	{/if}
 </div>

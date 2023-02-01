@@ -9,8 +9,11 @@
 	<h1 class="text-center">Welcome to the home page</h1>
 
 	<div class="text-center">
-		<a href="https://github.com/strawhattom/secure-web-dev-frontend"><h3>Front source code</h3></a>
-		<a href="https://github.com/strawhattom/secure-web-dev-backend"><h3>Back source code</h3></a>
+		<a href="https://github.com/strawhattom/secure-web-dev-frontend"
+			><h3>Front source code</h3></a
+		>
+		<a href="https://github.com/strawhattom/secure-web-dev-backend"
+			><h3>Back source code</h3></a
+		>
 	</div>
 </div>
-

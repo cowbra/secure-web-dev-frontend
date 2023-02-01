@@ -8,6 +8,7 @@ declare global {
 			role: string;
 			_id: string;
 			__v: number;
+			jwt: string;
 		}
 		interface Error {
 			message: string;

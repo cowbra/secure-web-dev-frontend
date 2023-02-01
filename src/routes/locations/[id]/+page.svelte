@@ -3,7 +3,7 @@
 	export let data: PageData;
 </script>
 
-{#if data.user.role === 'admin' && data.location}
+{#if data?.user && data?.location}
 	<p>> Go <a href="/locations">back</a></p>
 	{#each Object.entries(data.location) as [key, value]}
 		<p>{key}: {value}</p>

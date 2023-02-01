@@ -8,22 +8,20 @@
 	<h1>My profile</h1>
 	<form method="POST" action="?/profile">
 		<div class="form-outline mb-4">
-			<Input 
+			<Input
 				name="username"
 				label="Username"
-				value="{data.user.username}"
+				value={data.user.username}
 			/>
 		</div>
 		<div class="form-outline mb-4">
-			<Input
-				type="password"
-				name="password"
-				label="Password"
-			/>
+			<Input type="password" name="password" label="Password" />
 		</div>
-		<button formaction="?/profile" class="btn btn-warning btn-lg mb-3">Update</button>
-		<button formaction="?/disconnect" class="btn btn-danger btn-lg mb-3">Disconnect</button>
+		<button formaction="?/profile" class="btn btn-warning btn-lg mb-3"
+			>Update</button
+		>
+		<button formaction="?/disconnect" class="btn btn-danger btn-lg mb-3"
+			>Disconnect</button
+		>
 	</form>
 </div>
-
-

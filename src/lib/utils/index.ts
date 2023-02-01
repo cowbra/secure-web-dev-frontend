@@ -1,4 +1,4 @@
-import type { LocationProps } from "../types/location";
+import type { LocationProps } from '../types/location';
 
 const cleanLocationKeys = {
 	_id: 'id',
@@ -11,21 +11,25 @@ const cleanLocationKeys = {
 	filmDirectorName: 'Director',
 	address: 'Address',
 	year: 'Year'
-}
+};
 
 export const filterLocations = (locations: Array<LocationProps>) => {
-    const cleanKeys = Object.keys(cleanLocationKeys);
-	const filteredLocations = locations.map((location: LocationProps) => { // transform our results to new clean locations with clean keys
+	const cleanKeys = Object.keys(cleanLocationKeys);
+	const filteredLocations = locations.map((location: LocationProps) => {
+		// transform our results to new clean locations with clean keys
 		const renamedKeyLocation = {};
 		for (const [key, value] of Object.entries(location)) {
 			if (!cleanKeys.includes(key)) continue;
 			const newKey = cleanLocationKeys[key];
-			renamedKeyLocation[newKey] = ((key === 'endDate' || key === 'startDate') ? new Date(value).toLocaleDateString() : value);
+			renamedKeyLocation[newKey] =
+				key === 'endDate' || key === 'startDate'
+					? new Date(value).toLocaleDateString()
+					: value;
 		}
-		return renamedKeyLocation
-	})
-    return filteredLocations;
-} 
+		return renamedKeyLocation;
+	});
+	return filteredLocations;
+};
 
 export const filterOneLocation = (location: LocationProps) => {
 	const cleanKeys = Object.keys(cleanLocationKeys);
@@ -33,11 +37,14 @@ export const filterOneLocation = (location: LocationProps) => {
 	for (const [key, value] of Object.entries(location)) {
 		if (!cleanKeys.includes(key)) continue;
 		const newKey = cleanLocationKeys[key];
-		renamedKeyLocation[newKey] = ((key === 'endDate' || key === 'startDate') ? new Date(value).toLocaleDateString() : value);
+		renamedKeyLocation[newKey] =
+			key === 'endDate' || key === 'startDate'
+				? new Date(value).toLocaleDateString()
+				: value;
 	}
-	return renamedKeyLocation
-}
+	return renamedKeyLocation;
+};
 
 export const isNumber = (n: unknown): boolean => {
 	return Number(n) === n && n % 1 !== 0;
-}
+};

@@ -3,8 +3,9 @@ import { fail, redirect } from '@sveltejs/kit';
 
 import * as api from '$lib/api';
 
-export const load = (async ({ locals }) => {
-	if (locals.user) throw redirect(307, '/');
+export const load = (async ({ parent }) => {
+	const { user } = await parent();
+	if (user) throw redirect(307, '/');
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
