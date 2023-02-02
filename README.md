@@ -16,14 +16,14 @@ And in `.svelte-kit/tsconfig.json` add if not already :
 {
   "compilerOptions": {
     "paths": {
-			"$lib": [
-				"../src/lib"
-			],
-			"$lib/*": [
-				"../src/lib/*"
-			]
-		},
-    // ...
+      "$lib": [
+        "../src/lib"
+      ],
+      "$lib/*": [
+        "../src/lib/*"
+      ]
+    },
+  // ...
 }
 ```
 
