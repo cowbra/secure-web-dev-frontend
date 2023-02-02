@@ -50,16 +50,22 @@
 			<div class="row">
 				<div class="col form-outline mb-3">
 					<Input
+						type="date"
 						name="startDate"
 						label="Start date"
-						value={location.startDate}
+						value={new Date(
+							location.startDate
+						).toLocaleDateString()}
 					/>
 				</div>
 				<div class="col form-outline mb-3">
 					<Input
+						type="date"
 						name="endDate"
 						label="End date"
-						value={location.endDate}
+						value={new Date(
+							location.endDate
+						).toLocaleDateString()}
 					/>
 				</div>
 			</div>
@@ -82,7 +88,6 @@
 			<div class="row">
 				<div class="col form-outline mb-3 text-muted">
 					<Input
-						type="date"
 						name="geolocationX"
 						label="X"
 						value={location.geolocation.coordinates[0]}
@@ -90,12 +95,9 @@
 				</div>
 				<div class="col form-outline mb-3 text-muted">
 					<Input
-						type="date"
 						name="geolocationY"
 						label="Y"
-						value={new Date(
-							location.geolocation.coordinates[1]
-						).toLocaleDateString()}
+						value={location.geolocation.coordinates[1]}
 					/>
 				</div>
 				<div class="col form-outline mb-3 text=muted">

@@ -1,10 +1,10 @@
-import { fail, redirect } from '@sveltejs/kit';
-import { goto } from '$app/navigation';
+import { fail } from '@sveltejs/kit';
 import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load = (async ({ locals }) => {
 	if (locals.user) return locals.user;
+	return null;
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {

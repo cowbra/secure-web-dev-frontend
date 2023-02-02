@@ -1,4 +1,8 @@
-const base = 'http://localhost:3000';
+
+const host = import.meta.env.VITE_API_HOSTNAME || 'localhost';
+const port = import.meta.env.VITE_API_PORT || 3000
+
+const base = `http://${host}:${port}`;
 
 interface APIProps {
 	method: string;
@@ -25,6 +29,7 @@ async function send({ method, path, data, token }: APIProps) {
 		opts.headers['Authorization'] = `Bearer ${token}`;
 	}
 	try {
+		console.log(import.meta.env);
 		const res = await fetch(`${base}/${path}`, opts);
 		if (res.status === 200 || res.status === 201) {
 			const result = await res.text();

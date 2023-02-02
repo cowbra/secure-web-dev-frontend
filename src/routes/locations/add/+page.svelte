@@ -27,10 +27,10 @@
 		</div>
 		<div class="row">
 			<div class="col form-outline mb-3">
-				<Input name="startDate" label="Start date" />
+				<Input type="date" name="startDate" label="Start date" />
 			</div>
 			<div class="col form-outline mb-3">
-				<Input name="endDate" label="End date" />
+				<Input type="date" name="endDate" label="End date" />
 			</div>
 		</div>
 		<div class="form-outline mb-3">
@@ -43,10 +43,10 @@
 		<label class="form-label" for="geolocation">Geolocation</label>
 		<div class="row">
 			<div class="col form-outline mb-3 text-muted">
-				<Input type="date" name="geolocationX" label="X" />
+				<Input name="geolocationX" label="X" />
 			</div>
 			<div class="col form-outline mb-3 text-muted">
-				<Input type="date" name="geolocationY" label="Y" />
+				<Input name="geolocationY" label="Y" />
 			</div>
 			<div class="col form-outline mb-3 text-muted">
 				<Input name="geolocationType" label="Type" value="Point" />

@@ -6,7 +6,7 @@ import { filterLocations } from '$lib/utils';
 export const load = (async ({ locals }) => {
 	if (!locals.user) throw redirect(307, '/login');
 	const response = await api.get('locations', locals?.user?.jwt);
-	const locations = filterLocations(response.result);
+	const locations = filterLocations(response?.result);
 	return {
 		locations
 	};

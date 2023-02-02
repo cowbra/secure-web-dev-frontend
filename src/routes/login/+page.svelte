@@ -33,6 +33,6 @@
 		{#if form?.missingPassword}
 			<p class="text-danger">Missing password</p>
 		{/if}
-		{#if !form?.ok} <p class="text-danger">{form.result}</p> {/if}
+		{#if !form?.ok && form?.result} <p class="text-danger">{form.result}</p> {/if}
 	</form>
 </div>
