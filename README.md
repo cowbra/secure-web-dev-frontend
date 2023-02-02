@@ -7,6 +7,25 @@ School workshop to implement a front end to use a given back-end made by our tea
 ```bash
 npm install
 ```
+## Configuration
+```bash
+npm run check
+```
+And in `.svelte-kit/tsconfig.json` add if not already :
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "$lib": [
+        "../src/lib"
+      ],
+      "$lib/*": [
+        "../src/lib/*"
+      ]
+    },
+  // ...
+}
+```
 
 ## Developing (from svelte init)
 
