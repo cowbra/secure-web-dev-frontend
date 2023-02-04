@@ -6,7 +6,7 @@ COPY . .
 
 RUN ["npm", "install"]
 
-RUN ["npm", "run", "build"]
+CMD ["npm", "run", "dev"]
 
 # FROM nginx:1-alpine
 
