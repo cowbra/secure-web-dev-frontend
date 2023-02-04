@@ -100,7 +100,7 @@
 						value={location.geolocation.coordinates[1]}
 					/>
 				</div>
-				<div class="col form-outline mb-3 text=muted">
+				<div class="col form-outline mb-3 text-muted">
 					<Input
 						name="geolocationType"
 						label="Type"

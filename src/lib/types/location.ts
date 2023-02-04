@@ -1,3 +1,8 @@
+export type GeolocationProps = {
+	coordinates: Array<number>;
+	type: string;
+}
+
 export type LocationProps = {
 	_id: object;
 	filmType: string;
@@ -5,10 +10,10 @@ export type LocationProps = {
 	endDate: Date;
 	filmName: string;
 	district: string;
-	geolocation?: {
-		coordinates: Array<number>;
-		type: string;
-	};
+	geolocationX?: string,
+	geolocationY?: string,
+	geolocationType?: string,
+	geolocation: GeolocationProps;
 	sourceLocationId?: string;
 	filmDirectorName: string;
 	address: string;
@@ -18,14 +23,25 @@ export type LocationProps = {
 };
 
 export type FilteredLocationProps = {
-	id: string;
-	Type: string;
-	Producer: string;
-	'Ended at': Date;
-	'Started at': Date;
-	Name: string;
-	District: string;
-	Director: string;
-	Address: string;
-	Year: string;
+	id?: string;
+	Type?: string;
+	Producer?: string;
+	'Ended at'?: Date;
+	'Started at'?: Date;
+	Name?: string;
+	District?: string;
+	Director?: string;
+	Address?: string;
+	Year?: string;
 };
+
+export type LocationsLoadValues = {
+	locations: Array<FilteredLocationProps>;
+	index: number;
+}
+
+export type OneLocationLoadValue = {
+	location: LocationProps;
+} | {
+	message: string;
+}

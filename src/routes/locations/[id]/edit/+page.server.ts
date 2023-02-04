@@ -3,6 +3,7 @@ import { goto } from '$app/navigation';
 import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 import { isNumber } from '$lib/utils';
+import type { LocationProps } from '$lib/types/location';
 
 export const load = (async ({ locals, params }) => {
 	if (locals?.user?.role !== 'admin') throw redirect(307, '/locations');
@@ -18,7 +19,7 @@ export const actions: Actions = {
 	edit: async ({ locals, params, request }) => {
 		if (!locals.user) throw redirect(307, '/');
 		const data = await request.formData();
-		const payload = Object.fromEntries(data.entries());
+		const payload = Object.fromEntries(data.entries()) as unknown as LocationProps;
 		const id = params.id;
 		if (isNumber(payload.geolocationX) && isNumber(payload.geolocationY)) {
 			const x = Number(payload.geolocationX);

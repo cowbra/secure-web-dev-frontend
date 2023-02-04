@@ -1,18 +1,19 @@
 <script lang="ts">
 	import Pagination from '$lib/components/Pagination.svelte';
+	import { MAX_PAGES } from '$lib/constants';
 	import type { PageData } from './$types';
 	export let data: PageData;
+	$: MAX_PAGES;
+	$: p = data.index;
 </script>
 
 <h1>Locations</h1>
-<form method="GET" action="/locations/add" class="col-md-auto w-30">
-	<div class="form-outline">
-		<input type="submit" value="Add" class="btn btn-primary mb-3" />
-	</div>
-</form>
+{#if data?.user?.role === 'admin'}
+	<a class="btn btn-primary mb-2" href="/locations/add">New Location</a>
+{/if}
 {#if data}
 	{#if data.locations}
-		<table class="table table-striped">
+		<table class="table table-hover">
 			<!-- Headers row -->
 			<tr>
 				{#each Object.keys(data.locations[0]) as key}
@@ -49,6 +50,7 @@
 				</tr>
 			{/each}
 		</table>
+		<Pagination pages={MAX_PAGES} {p} href={(p) => `/locations?page=${p}`}/>
 	{:else}
 		<p>No location found</p>
 	{/if}

@@ -13,7 +13,7 @@
 
 {#if pages > 1}
 	<nav>
-		<ul class="pagination">
+		<ul class="pagination pagination-lg justify-content-center">
 			{#each range as n}
 				<li class="page-item" class:active={n == p}>
                     <a class="page-link" href={href(n)}>{n}</a>

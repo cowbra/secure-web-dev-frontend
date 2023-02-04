@@ -1,6 +1,6 @@
-import type { LocationProps } from '../types/location';
+import type { LocationProps, FilteredLocationProps } from '../types/location';
 
-const cleanLocationKeys = {
+const translateLocationKeys = {
 	_id: 'id',
 	filmType: 'Type',
 	filmProducerName: 'Producer',
@@ -12,18 +12,18 @@ const cleanLocationKeys = {
 	address: 'Address',
 	year: 'Year'
 };
+const cleanKeys = Object.keys(translateLocationKeys);
 
-export const filterLocations = (locations: Array<LocationProps>) => {
-	const cleanKeys = Object.keys(cleanLocationKeys);
+export const filterLocations = (locations: Array<LocationProps>): Array<FilteredLocationProps> => {
 	const filteredLocations = locations.map((location: LocationProps) => {
 		// transform our results to new clean locations with clean keys
 		const renamedKeyLocation = {};
 		for (const [key, value] of Object.entries(location)) {
 			if (!cleanKeys.includes(key)) continue;
-			const newKey = cleanLocationKeys[key];
+			const newKey = translateLocationKeys[key];
 			renamedKeyLocation[newKey] =
 				key === 'endDate' || key === 'startDate'
-					? new Date(value).toLocaleDateString()
+					? new Date(value as string).toLocaleDateString()
 					: value;
 		}
 		return renamedKeyLocation;
@@ -31,15 +31,15 @@ export const filterLocations = (locations: Array<LocationProps>) => {
 	return filteredLocations;
 };
 
-export const filterOneLocation = (location: LocationProps) => {
-	const cleanKeys = Object.keys(cleanLocationKeys);
-	const renamedKeyLocation = {};
+export const filterOneLocation = (location: LocationProps): FilteredLocationProps => {
+	
+	const renamedKeyLocation: FilteredLocationProps = {};
 	for (const [key, value] of Object.entries(location)) {
 		if (!cleanKeys.includes(key)) continue;
-		const newKey = cleanLocationKeys[key];
+		const newKey = translateLocationKeys[key];
 		renamedKeyLocation[newKey] =
 			key === 'endDate' || key === 'startDate'
-				? new Date(value).toLocaleDateString()
+				? new Date(value as string).toLocaleDateString()
 				: value;
 	}
 	return renamedKeyLocation;
