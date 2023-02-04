@@ -1,10 +1,17 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import Pagination from '$lib/components/Pagination.svelte';
 	import { MAX_PAGES } from '$lib/constants';
 	import type { PageData } from './$types';
 	export let data: PageData;
+	
 	$: MAX_PAGES;
 	$: p = data.index;
+	// URL PATH FORCE TO `MAX_PAGES`
+	$: if (browser && p >= MAX_PAGES) {
+		goto(`/locations?page=${MAX_PAGES}`);
+	}
 </script>
 
 <h1>Locations</h1>
