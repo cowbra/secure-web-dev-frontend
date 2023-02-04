@@ -5,8 +5,9 @@
 	import type { PageData, ActionData } from './$types';
 	export let form: ActionData;
 	export let data: PageData;
-
-	export let location = data.location;
+	$: location = data?.location;
+	$: startDate = new Date(location.startDate).toISOString().substr(0, 10);
+	$: endDate = new Date(location.startDate).toISOString().substr(0, 10);
 	$: if (browser && form) {
 		goto('/locations');
 	}
@@ -45,7 +46,7 @@
 						type="date"
 						name="startDate"
 						label="Start date"
-						value={new Date(location.startDate).toLocaleDateString()}
+						value={startDate}
 					/>
 				</div>
 				<div class="col form-outline mb-3">
@@ -53,12 +54,12 @@
 						type="date"
 						name="endDate"
 						label="End date"
-						value={new Date(location.endDate).toLocaleDateString()}
+						value={endDate}
 					/>
 				</div>
 			</div>
 			<div class="form-outline mb-3">
-				<Input name="district" label="District" value={location.district} />
+				<Input type="number" name="district" label="District" value={location.district} />
 			</div>
 			<div class="form-outline mb-3">
 				<Input
@@ -72,6 +73,7 @@
 			<div class="row">
 				<div class="col form-outline mb-3 text-muted">
 					<Input
+						type="number"
 						name="geolocationX"
 						label="X"
 						value={location.geolocation.coordinates[0]}
@@ -79,6 +81,7 @@
 				</div>
 				<div class="col form-outline mb-3 text-muted">
 					<Input
+						type="number"
 						name="geolocationY"
 						label="Y"
 						value={location.geolocation.coordinates[1]}
@@ -96,7 +99,7 @@
 				<Input name="address" label="Address" value={location.address} />
 			</div>
 			<div class="form-outline mb-3">
-				<Input name="year" label="Year" value={location.year} />
+				<Input type="number" name="year" label="Year" value={location.year} />
 			</div>
 			<button formaction="?/edit" class="btn btn-warning btn-lg mb-3"
 				>Update</button

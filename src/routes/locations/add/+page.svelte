@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="form-outline mb-3">
-			<Input name="district" label="District" />
+			<Input type="number" name="district" label="District" />
 		</div>
 		<div class="form-outline mb-3">
 			<Input name="sourceLocationId" label="Source Location Id" />
@@ -43,10 +43,10 @@
 		<label class="form-label" for="geolocation">Geolocation</label>
 		<div class="row">
 			<div class="col form-outline mb-3 text-muted">
-				<Input name="geolocationX" label="X" />
+				<Input type="number" name="geolocationX" label="X" />
 			</div>
 			<div class="col form-outline mb-3 text-muted">
-				<Input name="geolocationY" label="Y" />
+				<Input type="number" name="geolocationY" label="Y" />
 			</div>
 			<div class="col form-outline mb-3 text-muted">
 				<Input name="geolocationType" label="Type" value="Point" />
@@ -56,7 +56,7 @@
 			<Input name="address" label="Address" />
 		</div>
 		<div class="form-outline mb-1">
-			<Input name="year" label="Year" />
+			<Input type="number" name="year" label="Year" value=2023 />
 		</div>
 		<input type="submit" value="New" class="btn btn-primary mt-4 mb-4" />
 	</form>
