@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Pagination from '$lib/components/Pagination.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 </script>

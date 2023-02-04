@@ -3,13 +3,20 @@ import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 import { filterLocations } from '$lib/utils';
 
-export const load = (async ({ locals }) => {
+export const load = (async ({ locals, url }) => {
 	if (!locals.user) throw redirect(307, '/login');
-	const response = await api.get('locations', locals?.user?.jwt);
-	const locations = filterLocations(response?.result);
-	return {
-		locations
-	};
+	try {
+		const pageIndex = url.searchParams.get('page');
+		const page = Number.isInteger(pageIndex) ? parseInt(pageIndex,10) : 0;
+		const response = await api.get(`locations?offset=${page * 20}`, locals?.user?.jwt);
+		const locations = filterLocations(response?.result);
+		return {
+			locations
+		};
+	} catch (err) {
+		throw error(404)
+	}
+	
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {

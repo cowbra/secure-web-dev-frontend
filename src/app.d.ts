@@ -15,6 +15,7 @@ declare global {
 		}
 		interface Locals {
 			user: UserProps;
+			index: number | 0;
 		}
 		// interface Platform {}
 	}
