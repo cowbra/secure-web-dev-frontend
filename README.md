@@ -14,12 +14,6 @@ npm install
 npm run check
 ```
 
-.env
-```dotenv
-VITE_API_HOSTNAME=localhost
-VITE_API_PORT=3000
-```
-
 And in `.svelte-kit/tsconfig.json` add if not already :
 
 ```json
