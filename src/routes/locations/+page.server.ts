@@ -8,9 +8,12 @@ export const load = (async ({ locals, url }): Promise<LocationsLoadValues> => {
 	if (!locals.user) throw redirect(307, '/login');
 	try {
 		const pageIndex = url.searchParams.get('page') ?? '1';
-		const index = parseInt(pageIndex,10);
+		const index = parseInt(pageIndex, 10);
 		const page = Math.max(index - 1, 0); // non negative value possible
-		const response = await api.get(`locations?offset=${page >= 1 ? page * 20 : 0}`, locals?.user?.jwt);
+		const response = await api.get(
+			`locations?offset=${page >= 1 ? page * 20 : 0}`,
+			locals?.user?.jwt
+		);
 		const locations = filterLocations(response?.result);
 		return {
 			locations,
@@ -18,9 +21,8 @@ export const load = (async ({ locals, url }): Promise<LocationsLoadValues> => {
 		};
 	} catch (err) {
 		// if anything else than number in url parameter
-		throw error(404)
+		throw error(404);
 	}
-	
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {

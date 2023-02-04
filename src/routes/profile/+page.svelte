@@ -8,11 +8,7 @@
 	<h1>My profile</h1>
 	<form method="POST" action="?/profile">
 		<div class="form-outline mb-4">
-			<Input
-				name="username"
-				label="Username"
-				value={data.user.username}
-			/>
+			<Input name="username" label="Username" value={data.user.username} />
 		</div>
 		<div class="form-outline mb-4">
 			<Input type="password" name="password" label="Password" />

@@ -20,11 +20,7 @@
 				label="Password verification"
 			/>
 		</div>
-		<input
-			type="submit"
-			value="Register"
-			class="btn btn-primary mt-4 mb-4"
-		/>
+		<input type="submit" value="Register" class="btn btn-primary mt-4 mb-4" />
 		<p class="text-muted">
 			Have already an account?
 			<a href="/login"> Here </a>

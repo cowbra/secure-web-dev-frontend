@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
 	export let pages;
 	export let p;
 	export let href;
@@ -16,8 +16,8 @@
 		<ul class="pagination pagination-lg justify-content-center">
 			{#each range as n}
 				<li class="page-item" class:active={n == p}>
-                    <a class="page-link" href={href(n)}>{n}</a>
-                </li>
+					<a class="page-link" href={href(n)}>{n}</a>
+				</li>
 			{/each}
 		</ul>
 	</nav>

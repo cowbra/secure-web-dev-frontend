@@ -14,7 +14,9 @@ const translateLocationKeys = {
 };
 const cleanKeys = Object.keys(translateLocationKeys);
 
-export const filterLocations = (locations: Array<LocationProps>): Array<FilteredLocationProps> => {
+export const filterLocations = (
+	locations: Array<LocationProps>
+): Array<FilteredLocationProps> => {
 	const filteredLocations = locations.map((location: LocationProps) => {
 		// transform our results to new clean locations with clean keys
 		const renamedKeyLocation = {};
@@ -31,8 +33,9 @@ export const filterLocations = (locations: Array<LocationProps>): Array<Filtered
 	return filteredLocations;
 };
 
-export const filterOneLocation = (location: LocationProps): FilteredLocationProps => {
-	
+export const filterOneLocation = (
+	location: LocationProps
+): FilteredLocationProps => {
 	const renamedKeyLocation: FilteredLocationProps = {};
 	for (const [key, value] of Object.entries(location)) {
 		if (!cleanKeys.includes(key)) continue;

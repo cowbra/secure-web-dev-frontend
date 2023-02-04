@@ -1,6 +1,5 @@
-
 const host = import.meta.env.VITE_API_HOSTNAME || 'localhost';
-const port = import.meta.env.VITE_API_PORT || 3000
+const port = import.meta.env.VITE_API_PORT || 3000;
 
 const base = `http://${host}:${port}`;
 

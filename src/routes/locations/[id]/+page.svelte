@@ -5,13 +5,14 @@
 </script>
 
 {#if data?.user && data?.location}
-	<p> Go <a href="/locations">back</a></p>
+	<p>Go <a href="/locations">back</a></p>
 	{#each Object.entries(data.location) as [key, value]}
 		{#if key === 'geolocation'}
-		<p>
-			<span class="text-info">{key}</span> =
-			x: {data.location[key].coordinates[0]}, y: {data.location[key].coordinates[1]}, type: {data.location[key].type}
-		</p>
+			<p>
+				<span class="text-info">{key}</span> = x: {data.location[key]
+					.coordinates[0]}, y: {data.location[key].coordinates[1]}, type: {data
+					.location[key].type}
+			</p>
 		{:else}
 			<p><span class="text-info">{key}</span> = {value}</p>
 		{/if}

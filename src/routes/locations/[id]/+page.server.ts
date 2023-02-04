@@ -4,7 +4,10 @@ import { goto } from '$app/navigation';
 import * as api from '$lib/api';
 import type { OneLocationLoadValue } from '$lib/types/location';
 
-export const load = (async ({ params, locals }): Promise<OneLocationLoadValue> => {
+export const load = (async ({
+	params,
+	locals
+}): Promise<OneLocationLoadValue> => {
 	if (!locals.user) throw redirect(307, '/');
 	const id = params.id;
 	if (!id) goto('/locations');
