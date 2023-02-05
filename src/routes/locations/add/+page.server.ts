@@ -1,7 +1,8 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 import { isNumber } from '$lib/utils';
+import type { LocationProps } from '$lib/types/location';
 
 export const load = (async ({ locals }) => {
 	if (locals?.user?.role !== 'admin') throw redirect(307, '/locations');
@@ -11,7 +12,9 @@ export const actions: Actions = {
 	default: async ({ locals, request }) => {
 		if (!locals.user) throw redirect(307, '/');
 		const data = await request.formData();
-		const payload = Object.fromEntries(data.entries());
+		const payload = Object.fromEntries(
+			data.entries()
+		) as unknown as LocationProps;
 		if (isNumber(payload.geolocationX) && isNumber(payload.geolocationY)) {
 			const x = Number(payload.geolocationX);
 			const y = Number(payload.geolocationY);

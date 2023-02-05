@@ -3,7 +3,12 @@ import * as api from '$lib/api';
 import type { Actions, PageServerLoad } from './$types';
 import { filterLocations } from '$lib/utils';
 import type { LocationsLoadValues } from '$lib/types/location';
-import { BASE_10, OFFSET_FACTOR, DEFAULT_OFFSET, MAX_PAGES } from '$lib/constants';
+import {
+	BASE_10,
+	OFFSET_FACTOR,
+	DEFAULT_OFFSET,
+	MAX_PAGES
+} from '$lib/constants';
 
 export const load = (async ({ locals, url }): Promise<LocationsLoadValues> => {
 	if (!locals.user) throw redirect(307, '/login');
@@ -12,7 +17,9 @@ export const load = (async ({ locals, url }): Promise<LocationsLoadValues> => {
 		const index = Math.min(parseInt(pageIndex, BASE_10), MAX_PAGES); // max selecting 10th page
 		const page = Math.max(index - 1, 0); // non negative value possible
 		const response = await api.get(
-			`locations?offset=${(page >= 1) ? (page * OFFSET_FACTOR) : (DEFAULT_OFFSET)}`,
+			`locations?offset=${
+				page >= 1 ? page * OFFSET_FACTOR : DEFAULT_OFFSET
+			}`,
 			locals?.user?.jwt
 		);
 		const locations = filterLocations(response?.result);

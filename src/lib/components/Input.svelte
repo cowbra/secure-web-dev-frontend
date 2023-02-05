@@ -8,7 +8,20 @@
 
 <label class="form-label" for={name}>{label}</label>
 {#if type === 'number'}
-	<input type="number" {name} id={name} class="form-control form-control-lg" {value} min={min}/>
+	<input
+		type="number"
+		{name}
+		id={name}
+		class="form-control form-control-lg"
+		{value}
+		{min}
+	/>
 {:else}
-	<input {type} {name} id={name} class="form-control form-control-lg" {value}/>
+	<input
+		{type}
+		{name}
+		id={name}
+		class="form-control form-control-lg"
+		{value}
+	/>
 {/if}

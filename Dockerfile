@@ -6,8 +6,6 @@ COPY . .
 
 RUN ["npm", "install"]
 
-CMD ["npm", "run", "dev"]
+RUN ["npm", "run", "build"]
 
-# FROM nginx:1-alpine
-
-# COPY ./svelte-kit/output /usr/share/html/
+CMD ["node", "-r", "dotenv/config", "build"]

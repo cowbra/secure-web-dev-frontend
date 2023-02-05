@@ -56,7 +56,7 @@
 			<Input name="address" label="Address" />
 		</div>
 		<div class="form-outline mb-1">
-			<Input type="number" name="year" label="Year" value=2023 />
+			<Input type="number" name="year" label="Year" value="2023" />
 		</div>
 		<input type="submit" value="New" class="btn btn-primary mt-4 mb-4" />
 	</form>

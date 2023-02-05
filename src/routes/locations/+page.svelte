@@ -5,7 +5,7 @@
 	import { MAX_PAGES } from '$lib/constants';
 	import type { PageData } from './$types';
 	export let data: PageData;
-	
+
 	$: MAX_PAGES;
 	$: p = data.index;
 	// URL PATH FORCE TO `MAX_PAGES`
@@ -42,20 +42,26 @@
 						{/if}
 					{/each}
 					<td
-						><a class="text-primary" href="/locations/{location.id}">More</a
+						><a class="text-primary" href="/locations/{location.id}"
+							>More</a
 						></td
 					>
 					{#if data.user.role === 'admin'}
 						<td
-							><a class="text-warning" href="/locations/{location.id}/edit"
-								>Edit</a
+							><a
+								class="text-warning"
+								href="/locations/{location.id}/edit">Edit</a
 							></td
 						>
 					{/if}
 				</tr>
 			{/each}
 		</table>
-		<Pagination pages={MAX_PAGES} {p} href={(p) => `/locations?page=${p}`} />
+		<Pagination
+			pages={MAX_PAGES}
+			{p}
+			href={(p) => `/locations?page=${p}`}
+		/>
 	{:else}
 		<p>No location found</p>
 	{/if}

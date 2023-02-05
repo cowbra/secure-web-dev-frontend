@@ -12,7 +12,11 @@
 		<a class="navbar-brand" href="/">Secure Web Dev</a>
 		<ul class="nav navbar-nav pull-xs-right">
 			<li class="nav-item">
-				<a class="nav-link" class:active={$page.url.pathname === '/'} href="/">
+				<a
+					class="nav-link"
+					class:active={$page.url.pathname === '/'}
+					href="/"
+				>
 					Home
 				</a>
 			</li>

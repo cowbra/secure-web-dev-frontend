@@ -19,7 +19,11 @@
 	{#if location}
 		<form method="POST" class="col-md-auto">
 			<div class="form-outline mb-3">
-				<Input name="filmType" label="Film Type" value={location.filmType} />
+				<Input
+					name="filmType"
+					label="Film Type"
+					value={location.filmType}
+				/>
 			</div>
 			<div class="row">
 				<div class="col form-outline mb-3">
@@ -38,7 +42,11 @@
 				</div>
 			</div>
 			<div class="form-outline mb-3">
-				<Input name="filmName" label="Film Name" value={location.filmName} />
+				<Input
+					name="filmName"
+					label="Film Name"
+					value={location.filmName}
+				/>
 			</div>
 			<div class="row">
 				<div class="col form-outline mb-3">
@@ -59,7 +67,12 @@
 				</div>
 			</div>
 			<div class="form-outline mb-3">
-				<Input type="number" name="district" label="District" value={location.district} />
+				<Input
+					type="number"
+					name="district"
+					label="District"
+					value={location.district}
+				/>
 			</div>
 			<div class="form-outline mb-3">
 				<Input
@@ -96,10 +109,19 @@
 				</div>
 			</div>
 			<div class="form-outline mb-3">
-				<Input name="address" label="Address" value={location.address} />
+				<Input
+					name="address"
+					label="Address"
+					value={location.address}
+				/>
 			</div>
 			<div class="form-outline mb-3">
-				<Input type="number" name="year" label="Year" value={location.year} />
+				<Input
+					type="number"
+					name="year"
+					label="Year"
+					value={location.year}
+				/>
 			</div>
 			<button formaction="?/edit" class="btn btn-warning btn-lg mb-3"
 				>Update</button
