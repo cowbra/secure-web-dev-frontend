@@ -61,4 +61,4 @@ locations so that I can delete existing locations
 
 ### Additional user stories
 
-- AUS1 : As a logged-in user, I want to be redirected to locations page if i want to access to admin features like `/locations/[id]/edit` or `/locations/add`
+- :white_check_mark: AUS1 : As a logged-in user, I want to be redirected to locations page if i want to access to admin features like `/locations/[id]/edit` or `/locations/add`
