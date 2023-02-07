@@ -7,7 +7,7 @@ export const handle = (async ({ event, resolve }) => {
 	const response = await api.get('users/me', jwt);
 	if (response.ok) {
 		event.cookies.set('jwt', jwt, { path: '/' });
-		event.locals.user = { jwt, ...response.result };
+		event.locals.user = {...response.result, jwt };
 	} else {
 		event.cookies.delete('jwt');
 		event.locals.user = null;

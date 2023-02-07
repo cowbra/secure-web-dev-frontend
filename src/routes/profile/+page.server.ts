@@ -23,10 +23,10 @@ export const actions: Actions = {
 			{ username, password },
 			locals.user.jwt
 		);
+		console.log("PROFILE", response)
 		if (response.ok) {
 			const value = response.result.jwt;
 			cookies.set('jwt', value, { path: '/' });
-			throw redirect(307, '/locations');
 		}
 
 		return { ...response };
@@ -35,6 +35,6 @@ export const actions: Actions = {
 		if (!locals.user) throw error(401, '/');
 		cookies.delete('jwt');
 		locals.user = null;
-		throw redirect(307, '/');
+		return { ok: true };
 	}
 };

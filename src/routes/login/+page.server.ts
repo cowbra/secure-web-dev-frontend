@@ -19,9 +19,10 @@ export const actions: Actions = {
 
 		const response = await api.post('users/login', { username, password });
 		if (response.ok) {
-			const value = response.result.jwt;
-			cookies.set('jwt', value, { path: '/' });
-			locals.user = response.result;
+			const jwt = response.result.jwt;
+			cookies.set('jwt', jwt, { path: '/' });
+			const userResponse = await api.get('users/me', jwt);
+			locals.user = { ...userResponse.result, jwt };
 		}
 
 		return { ...response };
