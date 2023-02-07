@@ -123,12 +123,7 @@
 					value={location.year}
 				/>
 			</div>
-			<button formaction="?/edit" class="btn btn-warning btn-lg mb-3"
-				>Update</button
-			>
-			<button formaction="?/delete" class="btn btn-danger btn-lg mb-3"
-				>Delete</button
-			>
+			<button class="btn btn-warning btn-lg mb-3">Update</button>
 		</form>
 	{:else}
 		<p class="text-danger">No location found</p>

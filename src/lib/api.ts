@@ -25,7 +25,6 @@ async function send({ method, path, data, token }: APIProps) {
 		opts.headers['Authorization'] = `Bearer ${token}`;
 	}
 	try {
-		console.log(`${base}/${path}`);
 		const res = await fetch(`${base}/${path}`, opts);
 		if (res.status === 200 || res.status === 201) {
 			const result = await res.text();

@@ -23,7 +23,7 @@ export const actions: Actions = {
 			{ username, password },
 			locals.user.jwt
 		);
-		console.log("PROFILE", response)
+		console.log('PROFILE', response);
 		if (response.ok) {
 			const value = response.result.jwt;
 			cookies.set('jwt', value, { path: '/' });

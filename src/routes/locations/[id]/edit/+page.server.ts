@@ -16,7 +16,7 @@ export const load = (async ({ locals, params }) => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-	edit: async ({ locals, params, request }) => {
+	default: async ({ locals, params, request }) => {
 		if (!locals.user) throw redirect(307, '/');
 		const data = await request.formData();
 		const payload = Object.fromEntries(
@@ -45,14 +45,5 @@ export const actions: Actions = {
 			locals.user.jwt
 		);
 		return response;
-	},
-	delete: async ({ cookies, locals, params }) => {
-		if (!locals.user) throw redirect(307, '/');
-		const jwt = cookies.get('jwt');
-		if (!jwt) throw redirect(307, '/');
-		const id = params.id;
-		const response = await api.del(`locations/${id}`, jwt);
-		if (!response.ok) throw error(404, { message: response.result });
-		return response.result;
 	}
 };

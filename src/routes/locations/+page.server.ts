@@ -34,6 +34,10 @@ export const load = (async ({ locals, url }): Promise<LocationsLoadValues> => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
+	delete_result: async ({ locals }) => {
+		if (!locals.user) throw error(401);
+		return { delete: true };
+	},
 	delete: async ({ locals }) => {
 		if (!locals.user) throw error(401);
 		const response = await api.del('locations', locals.user?.jwt);
