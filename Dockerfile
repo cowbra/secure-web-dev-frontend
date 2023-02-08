@@ -8,4 +8,4 @@ RUN ["npm", "install"]
 
 RUN ["npm", "run", "build"]
 
-CMD ["node", "-r", "dotenv/config", "build"]
+CMD ["npm", "run", "preview"]
