@@ -35,6 +35,6 @@ export const actions: Actions = {
 		if (!locals.user) throw error(401, '/');
 		cookies.delete('jwt');
 		locals.user = null;
-		return { ok: true };
+		throw redirect(307, '/');
 	}
 };

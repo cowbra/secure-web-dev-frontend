@@ -1,4 +1,5 @@
-const base = process.env.ORIGIN ?? `http://localhost:3000`;
+const base =
+	process.env.ORIGIN ?? `https://secure-web-dev-backend.onrender.com`;
 
 interface APIProps {
 	method: string;

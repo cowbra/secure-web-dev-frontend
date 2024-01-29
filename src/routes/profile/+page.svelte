@@ -5,7 +5,6 @@
 	import type { PageData, ActionData } from './$types';
 	export let data: PageData;
 	export let form: ActionData;
-
 	$: if (browser && form?.ok && !data.user) {
 		goto('/');
 	}
